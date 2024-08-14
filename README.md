@@ -1,7 +1,10 @@
-eipw-action
+tnipv-action
 ===========
 
-A GitHub Action for running `eipw`, an Ethereum Improvement Proposal linter.
+A GitHub Action for running `tnipv`, an Telcoin Network Improvement Proposal linter.
+
+This is a Telcoin Network specific implementation of [EIPW-Action](https://github.com/ethereum/eipw-action/tree/799f24bcc83daf9a3959459f49c45ebbc7ff4fe9).
+We sincerely appreciate their effort, their quality of code, and their spirit of open-sourceness.
 
 ## Usage
 
@@ -18,8 +21,8 @@ jobs:
     name: Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.0.2
-      - uses: ethereum/eipw-action@dist
+      - uses: actions/checkout@v4
+      - uses: telcoin-association/tnipv-action@dist
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 ```

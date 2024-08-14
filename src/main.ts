@@ -4,7 +4,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-import * as eipw from "eipw-lint-js";
+import * as tnipv from "tnipv-lint-js";
 import core from "@actions/core";
 import github from "@actions/github";
 import { GitHub, getOctokitOptions } from "@actions/github/lib/utils.js";
@@ -44,7 +44,7 @@ async function main() {
 
         // Retry twice after hitting a rate limit error, then give up
         if (options?.request?.retryCount <= 2) {
-          console.log(`Retrying after ${retryAfter} seconds!`);
+          console.log(`Retrying after ${retryAfter} seconds...`);
           return true;
         }
       },
@@ -66,7 +66,7 @@ async function main() {
         break;
       default:
         core.warning(
-          "eipw-action should only be configured to run on pull requests"
+          "tnipv-action should only be configured to run on pull requests"
         );
         return;
     }
@@ -167,21 +167,21 @@ async function main() {
       }
     }
 
-    const result = await eipw.lint(files, levelConfig);
+    const result = await tnipv.lint(files, levelConfig);
     let hasErrors = false;
 
     for (let snippet of result) {
       let formatted;
 
       try {
-        formatted = eipw.format(snippet);
+        formatted = tnipv.format(snippet);
       } catch {
         // FIXME: This happens when there's an escape sequence in the JSON.
         //        serde_json can't deserialize it into an &str, so we display
         //        what we can.
         formatted = snippet.title?.label;
         if (!formatted) {
-          formatted = "<failed to render diagnostic, this is a bug in eipw>";
+          formatted = "<failed to render diagnostic, this is a bug in tnipv>";
         }
       }
 

@@ -1,33 +1,33 @@
-name: 'eipw'
-description: 'Run eipw, the EIP validator, as a GitHub action'
+name: "tnipv"
+description: "Run tnipv, the TNIP validator, as a GitHub action"
 inputs:
   token:
-    description: 'GitHub Secret Token'
+    description: "GitHub Secret Token"
     required: true
   path:
-    description: 'Path prefix to watch for changed files'
+    description: "Path prefix to watch for changed files"
     required: false
-    default: 'EIPS/'
+    default: "TNIPS/"
   unchecked:
-    description: 'EIP numbers (comma separated) that should not be linted'
+    description: "TNIP numbers (comma separated) for linter to skip"
     required: false
-    default: ''
+    default: ""
   deny-checks:
-    description: 'Replace these checks with errors'
+    description: "Replace these checks with errors"
     required: false
-    default: ''
+    default: ""
   warn-checks:
-    description: 'Replace these checks with warnings'
+    description: "Replace these checks with warnings"
     required: false
-    default: ''
+    default: ""
   allow-checks:
-    description: 'Hide these checks'
+    description: "Hide these checks"
     required: false
-    default: ''
+    default: ""
   options-file:
-    description: 'Path to TOML configuration file'
+    description: "Path to TOML configuration file"
     required: false
-    default: ''
+    default: ""
 runs:
-  using: 'node20'
-  main: 'dist/index.js'
+  using: "node20"
+  main: "dist/index.js"
